@@ -1,0 +1,35 @@
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: registration-service
+              uri: lb://registration-service
+              predicates:
+                - Path=/api/bookings/**
+
+            - id: fare-service
+              uri: lb://fare-service
+              predicates:
+                - Path=/fares/**
+
+            - id: workshop-service
+              uri: lb://workshop-service
+              predicates:
+                - Path=/api/workshops/**
+
+            - id: payment-service
+              uri: lb://payment-service
+              predicates:
+                - Path=/payment/**
+
+            - id: chatbot-service
+              uri: lb://chatbot-service
+              predicates:
+                - Path=/admin/tickets/**
+
+            - id: chatbot-service
+              uri: lb://chatbot-service
+              predicates:
+                - Path=/chatbot/**
